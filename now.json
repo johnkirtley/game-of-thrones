@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "name": "game-of-thrones",
+    "builds": [{
+        "src": "game-of-thrones/package.json",
+        "use": "@now/static-build",
+        "config": {
+            "distDir": "build"
+        }
+    }],
+    "routes": [{
+        "src": "/(.*)",
+        "dest": "game-of-thrones/$1"
+    }]
+}
