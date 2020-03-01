@@ -3,14 +3,20 @@ import parse from 'html-react-parser'
 import WatchedContext from '../contexts/WatchedContext';
 
 
-const initialState = []
+const initialState = {}
 
 
 export const Episodes = ({ episodes }) => {
     const [watched, setWatched] = useContext(WatchedContext)
 
     const addWatched = e => {
-        setWatched([...watched, e.target.value]);
+        if (!e.value) {
+            setWatched({
+                ...watched,
+                [e.target.value]: true
+            })
+        }
+        // NEED TO SET NOTIFICATION IF ALREADY ADDED
     }
 
     return (

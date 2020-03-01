@@ -17,6 +17,9 @@ export default function App() {
   const [watched, setWatched] = useState([])
   const episodes = seasons[selectedSeason] || [];
 
+  const size = Object.keys(watched).length
+
+  console.log(size)
 
   useEffect(() => {
     fetchShow()
@@ -34,6 +37,8 @@ export default function App() {
     return <h2>Fetching data...</h2>;
   }
 
+  console.log(episodes)
+
   return (
     <div className="App">
       <h1>{show.name}</h1>
@@ -42,7 +47,7 @@ export default function App() {
       <label htmlFor="progress">Your Progress</label>
       {/* Will break progress bar out into own component once save
       functionality is complete */}
-      <progress value={watched.length} max={show._embedded.episodes.length}>15%</progress>
+      <progress value={size} max={show._embedded.episodes.length}>15%</progress>
 
       <p>Show Status: {show.status}</p>
       <p>Average Rating: {show.rating.average}</p>
@@ -75,7 +80,9 @@ export default function App() {
           <Route exact path="/" render={props => {
             return <Episodes {...props} episodes={episodes} />
           }} />
-          <Route exact path="/watched" component={WatchedList} />
+          <Route exact path="/watched" render={props => {
+            return <WatchedList {...props} episodes={episodes} />
+          }} />
         </WatchedContext.Provider>
       </div>
     </div>
