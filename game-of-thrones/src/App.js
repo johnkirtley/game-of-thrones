@@ -5,6 +5,7 @@ import parse from 'html-react-parser';
 import { Route, Link } from 'react-router-dom';
 import { formatSeasons } from './utils/formatSeasons';
 import './App.css';
+import { Button } from '@material-ui/core'
 
 import { Episodes } from './components/Episodes';
 import { WatchedList } from './components/WatchedList';

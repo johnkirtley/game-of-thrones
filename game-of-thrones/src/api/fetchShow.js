@@ -4,7 +4,7 @@ import axios from 'axios';
 export const fetchShow = () => {
     return axios
         .get(
-            "http://api.tvmaze.com/singlesearch/shows?q=game-of-thrones&embed=episodes"
+            "https://api.tvmaze.com/singlesearch/shows?q=game-of-thrones&embed=episodes"
         )
         .then(res => {
             console.log(res)
