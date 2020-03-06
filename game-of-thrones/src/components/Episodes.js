@@ -33,7 +33,7 @@ export const Episodes = ({ episodes }) => {
                             <h3>{episode.name}</h3>
                             <img src={episode.image.original} alt={episode.name} className="episode-image" />
                             <div>{parse(episode.summary)}</div>
-                            <button onClick={addWatched} value={episode.name}>Watched</button>
+                            {/* <button onClick={addWatched} value={episode.name}>Watched</button> */}
                         </Paper>
                     </Grid>
                 )
