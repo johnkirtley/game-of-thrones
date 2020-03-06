@@ -1,0 +1,57 @@
+body {
+    background-color: $dark-color;
+    color: white;
+}
+
+.title {
+    width: 45%;
+}
+
+.sub-info {
+    display: flex;
+    justify-content: space-evenly;
+
+    .status {
+        color: white;
+        border-color: white;
+    }
+
+    .rating {
+        @extend .status
+    }
+}
+
+.main-image {
+    width: 40%;
+    height: auto;
+    padding: 3% 0;
+}
+
+#genre-list {
+    margin-bottom: 3%;
+
+    .genre {
+        color: white;
+        border-color: white;
+    }
+}
+
+#dropdown {
+    margin-bottom: 3%;
+}
+
+.summary {
+    max-width: 35rem;
+}
+
+#episode-card {
+    padding: 3% 0;
+    background-color: $ice-blue;
+    min-height: 30rem;
+    height: fit-content;
+
+    .episode-summary {
+        max-width: 85%;
+        margin: auto;
+    }
+}
