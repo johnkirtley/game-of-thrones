@@ -27,10 +27,31 @@ body {
     padding: 3% 0;
 }
 
-.genre-list {
+#genre-list {
+    margin-bottom: 3%;
 
     .genre {
         color: white;
         border-color: white;
+    }
+}
+
+#dropdown {
+    margin-bottom: 3%;
+}
+
+.summary {
+    max-width: 35rem;
+}
+
+#episode-card {
+    padding: 3% 0;
+    background-color: $ice-blue;
+    min-height: 30rem;
+    height: fit-content;
+
+    .episode-summary {
+        max-width: 85%;
+        margin: auto;
     }
 }
