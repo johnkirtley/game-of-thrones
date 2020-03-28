@@ -11,6 +11,8 @@ import { Episodes } from './components/Episodes';
 import { WatchedList } from './components/WatchedList';
 import WatchedContext from './contexts/WatchedContext';
 
+import { v4 as uuidv4 } from 'uuid';
+
 export default function App() {
   const [show, setShow] = useState(null);
   const [seasons, setSeasons] = useState([]);
@@ -80,7 +82,7 @@ export default function App() {
               spacing={3}
             >
               {show.genres.map(genre => (
-                <Grid item>
+                <Grid item key={uuidv4()}>
                   <Button className="genre" variant="outlined">
                     {genre}
                   </Button>
