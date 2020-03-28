@@ -12,9 +12,9 @@ module.exports = {
 			directory: './data/seeds'
 		}
 	},
-	testing: {
+	production: {
 		client: 'pg',
-		connection: 'postgresql://localhost:5432/gameofthrones',
+		connection: process.env.DATABASE_URL,
 		migrations: {
 			directory: './data/migrations'
 		},
