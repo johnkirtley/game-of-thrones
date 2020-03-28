@@ -30,8 +30,8 @@ function findBy(filter) {
 	return db('users').where(filter);
 }
 
-function addWatched(episode) {
-	return db('watched').insert(episode);
+function addWatched(id, episode) {
+	return db('watched').insert({ episode_name: episode, user_id: id });
 }
 
 function findWatched(id) {

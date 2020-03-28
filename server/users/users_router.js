@@ -3,10 +3,12 @@ const Model = require('./model');
 
 const router = express.Router();
 
-router.post('/', (req, res) => {
-	const episode = req.body;
+// Add Episode To Saved List
+router.post('/:id', (req, res) => {
+	const { episode_name } = req.body;
+	const { id } = req.params;
 
-	Model.addWatched(episode)
+	Model.addWatched(id, episode_name)
 		.then(response => {
 			res.status(200).json({ message: 'Episode added' });
 		})
@@ -15,6 +17,7 @@ router.post('/', (req, res) => {
 		});
 });
 
+// Get All Users
 router.get('/', (req, res) => {
 	Model.find()
 		.then(users => {
@@ -25,6 +28,7 @@ router.get('/', (req, res) => {
 		});
 });
 
+// Get Watched Episodes By User
 router.get('/:id/watched', (req, res) => {
 	const { id } = req.params;
 
