@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
 
 const initialState = {
@@ -9,14 +9,7 @@ const initialState = {
 export const Login = props => {
 	const [credentials, setCredentials] = useState(initialState);
 	const [loading, setLoading] = useState(false);
-	const isMounted = useRef(null);
-
-	useEffect(() => {
-		isMounted.current = true;
-		return () => {
-			isMounted.current = false;
-		};
-	}, []);
+	let isMounted = useRef(true);
 
 	const handleChanges = e => {
 		setCredentials({
@@ -25,31 +18,33 @@ export const Login = props => {
 		});
 	};
 
-	const handleSubmit = e => {
+	const handleSubmit = async e => {
 		e.preventDefault();
 		setLoading(true);
-
-		axios
+		await axios
 			.post(
 				'https://game-of-thrones-backend.herokuapp.com/api/auth/login',
 				credentials
 			)
 			.then(res => {
-				const token = res.data.token;
-				const id = res.data.id;
-				window.localStorage.setItem('token', token);
-				window.localStorage.setItem('id', id);
-				setLoading(false);
+				setTimeout(() => {
+					const token = res.data.token;
+					const id = res.data.id;
+					window.localStorage.setItem('token', token);
+					window.localStorage.setItem('id', id);
+					props.history.push('/progress');
+				}, 1000);
 			})
 			.catch(err => {
 				console.log('Error logging in', err);
-			})
-			.finally(() => {
-				if (isMounted.current) {
-					setLoading(false);
-				}
 			});
 	};
+
+	useEffect(() => {
+		return () => {
+			isMounted.current = false;
+		};
+	});
 
 	return (
 		<div>
