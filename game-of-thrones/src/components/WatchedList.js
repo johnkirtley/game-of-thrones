@@ -1,19 +1,16 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react';
 import WatchedContext from '../contexts/WatchedContext';
 
+export const WatchedList = props => {
+	const [watched] = useContext(WatchedContext);
 
-export const WatchedList = (props) => {
-    const [watched] = useContext(WatchedContext);
+	const titles = Object.keys(watched);
 
-    const titles = Object.keys(watched)
-
-    return (
-        <div>
-            {titles.map(title => {
-                return (
-                    <div key={Date.now()}>{title}</div>
-                )
-            })}
-        </div>
-    )
-}
+	return (
+		<div>
+			{titles.map(title => {
+				return <div key={Date.now()}>{title}</div>;
+			})}
+		</div>
+	);
+};
