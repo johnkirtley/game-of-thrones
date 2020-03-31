@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import axios from 'axios';
+
+import { TextField, Button } from '@material-ui/core';
 
 const initialState = {
 	username: '',
@@ -46,19 +49,39 @@ export const Login = props => {
 	});
 
 	return (
-		<div>
+		<div className='form-container'>
 			{loading ? (
 				<Loader type='Circles' color='#B5E5FA' height={50} width={50} />
 			) : (
 				''
 			)}
 			<form onSubmit={handleSubmit}>
-				<label htmlFor='username'></label>
-				<input type='text' name='username' onChange={handleChanges} />
-
-				<label htmlFor='password'>Password</label>
-				<input type='text' name='password' onChange={handleChanges} />
-				<button>Login</button>
+				<div>
+					<TextField
+						htmlFor='username'
+						label='Username'
+						type='text'
+						name='username'
+						onChange={handleChanges}
+					/>
+				</div>
+				<div>
+					<TextField
+						htmlFor='password'
+						label='Password'
+						type='password'
+						name='password'
+						onChange={handleChanges}
+					/>
+				</div>
+				<Button id='login-button' variant='contained' type='submit'>
+					Login
+				</Button>
+				<div>
+					<Link id='login-button' to='/register'>
+						Need To Register For An Account?
+					</Link>
+				</div>
 			</form>
 		</div>
 	);
