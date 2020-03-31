@@ -6,7 +6,7 @@ export const Nav = () => {
 		window.localStorage.clear();
 	};
 	return (
-		<div>
+		<div class='navbar-desktop'>
 			<ul>
 				<Link to='/'>Home</Link>
 				<Link to='/progress'>Progress Tracker</Link>

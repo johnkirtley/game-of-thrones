@@ -11,6 +11,7 @@ export const Home = props => {
 	const handleChange = e => {
 		setSelectedSeason(e.value);
 	};
+
 	return (
 		<div>
 			<h1>
@@ -32,6 +33,20 @@ export const Home = props => {
 					</Button>
 				</Grid>
 			</Grid>
+			{/* <Grid
+				container
+				direction='row'
+				justify='center'
+				id='genre-list'
+				spacing={3}>
+				{props.show.genres.map(genre => (
+					<Grid item>
+						<Button className='genre' variant='outlined'>
+							{genre}
+						</Button>
+					</Grid>
+				))}
+			</Grid> */}
 			<img
 				className='main-image'
 				src={props.show.image.original}
@@ -39,20 +54,6 @@ export const Home = props => {
 			/>
 
 			<div>
-				<Grid
-					container
-					direction='row'
-					justify='center'
-					id='genre-list'
-					spacing={3}>
-					{props.show.genres.map(genre => (
-						<Grid item>
-							<Button className='genre' variant='outlined'>
-								{genre}
-							</Button>
-						</Grid>
-					))}
-				</Grid>
 				<Button variant='contained' id='dropdown'>
 					<Dropdown
 						options={Object.keys(props.seasons)}
@@ -61,7 +62,7 @@ export const Home = props => {
 						value={selectedSeason || 'Select a season'}
 					/>
 				</Button>
-				<Episodes {...props} episodes={episodes} />;
+				<Episodes {...props} episodes={episodes} />
 			</div>
 		</div>
 	);

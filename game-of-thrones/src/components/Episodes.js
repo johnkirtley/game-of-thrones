@@ -5,19 +5,9 @@ import { Button, Grid, Paper, Container } from '@material-ui/core';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 export const Episodes = ({ episodes }) => {
-	// const addWatched = e => {
-	//   if (!e.value) {
-	//     setWatched({
-	//       ...watched,
-	//       [e.target.value]: true
-	//     });
-	//   }
-	// NEED TO SET NOTIFICATION IF ALREADY ADDED
-	// };
-
-	const addWatched = async e => {
+	const addWatched = e => {
 		const id = window.localStorage.getItem('id');
-		const newWatched = await {
+		const newWatched = {
 			episode_name: e.target.value,
 			user_id: Number(id)
 		};
@@ -34,8 +24,6 @@ export const Episodes = ({ episodes }) => {
 				console.log('Error adding episode', err);
 			});
 	};
-
-	console.log('episodes', episodes);
 
 	return (
 		<Container>
