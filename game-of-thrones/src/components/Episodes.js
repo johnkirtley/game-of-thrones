@@ -5,8 +5,6 @@ import { Button, Grid, Paper, Container } from '@material-ui/core';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 export const Episodes = ({ episodes }) => {
-	const [watched, setWatched] = useContext(WatchedContext);
-
 	// const addWatched = e => {
 	//   if (!e.value) {
 	//     setWatched({
@@ -37,7 +35,6 @@ export const Episodes = ({ episodes }) => {
 			});
 	};
 
-	console.log(watched);
 	console.log('episodes', episodes);
 
 	return (

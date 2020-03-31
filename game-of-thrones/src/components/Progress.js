@@ -26,12 +26,11 @@ export const Progress = props => {
 			.catch(err => {
 				console.log('Error getting watched list', err);
 			});
-	}, []);
+	}, [id]);
 
 	return (
 		<div>
-			<h2>Progress</h2>
-			<label htmlFor='progress'>Your Progress</label>
+			<h2>Overall Progress</h2>
 			<progress value={watched.length} max={maxEpisodes}>
 				15%
 			</progress>
