@@ -46,6 +46,8 @@ export const Episodes = ({ episodes }) => {
 		}
 	};
 
+	const token = window.localStorage.getItem('token');
+
 	return (
 		<Container>
 			<Grid container justify='center' spacing={3}>
@@ -60,34 +62,41 @@ export const Episodes = ({ episodes }) => {
 									className='episode-image'
 								/>
 								<div className='episode-summary'>{parse(episode.summary)}</div>
-								<Button
-									variant='contained'
-									color='primary'
-									onClick={addWatched}
-									value={episode.name}>
-									+ Watched
-								</Button>
-								<Snackbar
-									anchorOrigin={{
-										vertical: 'bottom',
-										horizontal: 'left'
-									}}
-									open={open}
-									autoHideDuration={8000}
-									onClose={handleClose}
-									message='Episode Successfully Added!'
-									action={
-										<>
-											<IconButton
-												size='small'
-												aria-label='close'
-												color='inherit'
-												onClick={handleClose}>
-												<CloseIcon fontSize='small' />
-											</IconButton>
-										</>
-									}
-								/>
+								{token ? (
+									<>
+										<Button
+											id='watched-button'
+											variant='contained'
+											color='primary'
+											onClick={addWatched}
+											value={episode.name}>
+											+ Watched
+										</Button>
+										<Snackbar
+											anchorOrigin={{
+												vertical: 'bottom',
+												horizontal: 'left'
+											}}
+											open={open}
+											autoHideDuration={8000}
+											onClose={handleClose}
+											message='Episode Successfully Added!'
+											action={
+												<>
+													<IconButton
+														size='small'
+														aria-label='close'
+														color='inherit'
+														onClick={handleClose}>
+														<CloseIcon fontSize='small' />
+													</IconButton>
+												</>
+											}
+										/>
+									</>
+								) : (
+									''
+								)}
 							</Paper>
 						</Grid>
 					);
