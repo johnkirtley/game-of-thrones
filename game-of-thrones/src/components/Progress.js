@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { fetchShow } from '../api/fetchShow';
 import Loader from 'react-loader-spinner';
+import { Paper } from '@material-ui/core';
+import { Line } from 'rc-progress';
 
 export const Progress = props => {
 	const [watched, setWatched] = useState([]);
@@ -35,18 +37,29 @@ export const Progress = props => {
 	}, [id]);
 
 	return (
-		<div>
+		<div className='watched-container'>
 			<h2>Overall Progress</h2>
 			{isLoading ? (
 				<Loader type='Circles' color='#B5E5FA' height={50} width={50} />
 			) : (
 				''
 			)}
-			<progress value={watched.length} max={maxEpisodes}>
+			<p>{Math.floor((watched.length / maxEpisodes) * 100)}% Complete</p>
+			<Line
+				className='progress-bar'
+				percent={watched.length}
+				strokeWidth='4'
+				strokeColor='green'
+				trailWidth='2'
+				percent={(watched.length / maxEpisodes) * 100}
+			/>
+			{/* <progress value={watched.length} max={maxEpisodes}>
 				15%
-			</progress>
+			</progress> */}
 			{watched.map(episode => (
-				<p>{episode.episode_name}</p>
+				<Paper elevation={2} variant='outlined' className='watched-episode'>
+					{episode.episode_name}
+				</Paper>
 			))}
 		</div>
 	);
