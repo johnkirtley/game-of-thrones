@@ -1,14 +1,26 @@
 import React, { useState, useContext } from 'react';
 import parse from 'html-react-parser';
 import WatchedContext from '../contexts/WatchedContext';
-import { Button, Grid, Paper, Container } from '@material-ui/core';
+import {
+	Button,
+	Grid,
+	Paper,
+	Container,
+	Snackbar,
+	IconButton
+} from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 export const Episodes = ({ episodes }) => {
+	const [open, setOpen] = useState(false);
+
 	const addWatched = e => {
+		setOpen(true);
+
 		const id = window.localStorage.getItem('id');
 		const newWatched = {
-			episode_name: e.target.value,
+			episode_name: e.currentTarget.value,
 			user_id: Number(id)
 		};
 
@@ -19,10 +31,19 @@ export const Episodes = ({ episodes }) => {
 			)
 			.then(res => {
 				console.log(res);
+				setTimeout(() => {
+					setOpen(false);
+				}, 1500);
 			})
 			.catch(err => {
 				console.log('Error adding episode', err);
 			});
+	};
+
+	const handleClose = (event, reason) => {
+		if (reason === 'clickaway') {
+			return;
+		}
 	};
 
 	return (
@@ -39,9 +60,34 @@ export const Episodes = ({ episodes }) => {
 									className='episode-image'
 								/>
 								<div className='episode-summary'>{parse(episode.summary)}</div>
-								<button onClick={addWatched} value={episode.name}>
-									Watched
-								</button>
+								<Button
+									variant='contained'
+									color='primary'
+									onClick={addWatched}
+									value={episode.name}>
+									+ Watched
+								</Button>
+								<Snackbar
+									anchorOrigin={{
+										vertical: 'bottom',
+										horizontal: 'left'
+									}}
+									open={open}
+									autoHideDuration={8000}
+									onClose={handleClose}
+									message='Episode Successfully Added!'
+									action={
+										<>
+											<IconButton
+												size='small'
+												aria-label='close'
+												color='inherit'
+												onClick={handleClose}>
+												<CloseIcon fontSize='small' />
+											</IconButton>
+										</>
+									}
+								/>
 							</Paper>
 						</Grid>
 					);
