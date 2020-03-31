@@ -17,15 +17,15 @@ export const Register = props => {
 		console.log(credentials);
 	};
 
-	const handleSubmit = e => {
+	const handleSubmit = async e => {
 		e.preventDefault();
-		axios
+		await axios
 			.post(
 				'https://game-of-thrones-backend.herokuapp.com/api/auth/register',
 				credentials
 			)
 			.then(res => {
-				console.log(res);
+				props.history.push('/login');
 			})
 			.catch(err => {
 				console.log('Error registering', err);

@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { useState, useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
-	const token = window.localStorage.getItem('token');
-
 	return (
 		<Route
 			{...rest}
 			render={props => {
+				const token = window.localStorage.getItem('token');
+
 				if (token) {
 					return <Component {...props} />;
 				} else {

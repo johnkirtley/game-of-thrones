@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import Loader from 'react-loader-spinner';
 import axios from 'axios';
 
 const initialState = {
@@ -27,13 +28,11 @@ export const Login = props => {
 				credentials
 			)
 			.then(res => {
-				setTimeout(() => {
-					const token = res.data.token;
-					const id = res.data.id;
-					window.localStorage.setItem('token', token);
-					window.localStorage.setItem('id', id);
-					props.history.push('/progress');
-				}, 1000);
+				const token = res.data.token;
+				const id = res.data.id;
+				window.localStorage.setItem('token', token);
+				window.localStorage.setItem('id', id);
+				props.history.push('/progress');
 			})
 			.catch(err => {
 				console.log('Error logging in', err);
@@ -48,7 +47,11 @@ export const Login = props => {
 
 	return (
 		<div>
-			{loading ? <p>Loading...</p> : ''}
+			{loading ? (
+				<Loader type='Circles' color='#B5E5FA' height={50} width={50} />
+			) : (
+				''
+			)}
 			<form onSubmit={handleSubmit}>
 				<label htmlFor='username'></label>
 				<input type='text' name='username' onChange={handleChanges} />
