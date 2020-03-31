@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { fetchShow } from '../api/fetchShow';
 
-export const Progress = () => {
+export const Progress = props => {
 	const [watched, setWatched] = useState([]);
+	const [maxEpisodes, setMaxEpisodes] = useState();
+
+	useEffect(() => {
+		fetchShow().then(res => {
+			setMaxEpisodes(res.data._embedded.episodes.length);
+		});
+	}, []);
 
 	const id = window.localStorage.getItem('id');
 
@@ -23,6 +31,10 @@ export const Progress = () => {
 	return (
 		<div>
 			<h2>Progress</h2>
+			<label htmlFor='progress'>Your Progress</label>
+			<progress value={watched.length} max={maxEpisodes}>
+				15%
+			</progress>
 			{watched.map(episode => (
 				<p>{episode.episode_name}</p>
 			))}
