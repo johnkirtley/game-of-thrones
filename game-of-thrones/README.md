@@ -24,9 +24,7 @@ npm run start
 
 ## Backend API Repository
 
-```sh
 [Repository](https://github.com/johnkirtley/got-backend)
-```
 
 ## Run tests
 
