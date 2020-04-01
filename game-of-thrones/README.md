@@ -37,7 +37,6 @@ npm run test
 👤 **John Kirtley**
 
 - Website: https://johnkirtley.codes
-- Twitter: [@johnkirtley\_](https://twitter.com/johnkirtley_)
 - Github: [@johnkirtley](https://github.com/johnkirtley)
 - LinkedIn: [@johnkirtley16](https://linkedin.com/in/johnkirtley16)
 
