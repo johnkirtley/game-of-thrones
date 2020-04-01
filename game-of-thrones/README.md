@@ -1,25 +1,37 @@
-<h1 align="center">Welcome to Game of Thrones Episode Lookup 👋</h1>
+<h1 align="center">Welcome to Game of Thrones Episode Tracker 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
-  <a href="https://twitter.com/johnkirtley" target="_blank">
-    <img alt="Twitter: johnkirtley" src="https://img.shields.io/twitter/follow/johnkirtley.svg?style=social" />
+  <a href="https://twitter.com/johnkirtley\_" target="_blank">
+    <img alt="Twitter: johnkirtley\_" src="https://img.shields.io/twitter/follow/johnkirtley\_.svg?style=social" />
   </a>
 </p>
 
-> View a summary of every Game of Thrones episode by season.
+> Allows you to track your Game of Thrones Progress
 
 ### 🏠 [Homepage](https://game-of-thrones-ecru.now.sh/)
 
 ## Install
 
 ```sh
-yarn install
+npm install
 ```
 
 ## Usage
 
 ```sh
-yarn run start
+npm run start
+```
+
+## Backend API Repository
+
+```sh
+[Repository](https://github.com/johnkirtley/got-backend)
+```
+
+## Run tests
+
+```sh
+npm run test
 ```
 
 ## Author
@@ -27,7 +39,7 @@ yarn run start
 👤 **John Kirtley**
 
 - Website: https://johnkirtley.codes
-- Twitter: [@johnkirtley](https://twitter.com/johnkirtley_)
+- Twitter: [@johnkirtley\_](https://twitter.com/johnkirtley_)
 - Github: [@johnkirtley](https://github.com/johnkirtley)
 - LinkedIn: [@johnkirtley16](https://linkedin.com/in/johnkirtley16)
 
