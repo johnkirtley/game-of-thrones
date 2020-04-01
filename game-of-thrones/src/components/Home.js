@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Grid, Container } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Button, Grid } from '@material-ui/core';
 import Dropdown from 'react-dropdown';
 
 import { Episodes } from './Episodes';

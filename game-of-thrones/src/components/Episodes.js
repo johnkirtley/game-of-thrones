@@ -1,6 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import parse from 'html-react-parser';
-import WatchedContext from '../contexts/WatchedContext';
 import {
 	Button,
 	Grid,
