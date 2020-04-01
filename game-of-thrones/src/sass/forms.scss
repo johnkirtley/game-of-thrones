@@ -1,0 +1,14 @@
+.form-container {
+	display: flex;
+	flex-flow: column;
+	background-color: $ice-blue;
+	width: 95%;
+	margin: auto;
+	border-radius: 10px;
+	padding: 2% 0;
+}
+
+#register-button,
+#login-button {
+	margin: 3% 0;
+}
