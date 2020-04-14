@@ -5,7 +5,7 @@ import Loader from 'react-loader-spinner';
 import { Paper } from '@material-ui/core';
 import { Line } from 'rc-progress';
 
-export const Progress = props => {
+export const Progress = (props) => {
 	const [watched, setWatched] = useState([]);
 	const [maxEpisodes, setMaxEpisodes] = useState();
 	const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +13,7 @@ export const Progress = props => {
 	console.log(maxEpisodes);
 
 	useEffect(() => {
-		fetchShow().then(res => {
+		fetchShow().then((res) => {
 			setMaxEpisodes(res.data._embedded.episodes.length);
 		});
 	}, []);
@@ -27,13 +27,13 @@ export const Progress = props => {
 			.get(
 				`https://game-of-thrones-backend.herokuapp.com/api/users/${id}/watched`
 			)
-			.then(res => {
+			.then((res) => {
 				setTimeout(() => {
 					setWatched(res.data);
 					setIsLoading(false);
 				}, 1000);
 			})
-			.catch(err => {
+			.catch((err) => {
 				console.log('Error getting watched list', err);
 			});
 	}, [id]);
@@ -54,11 +54,15 @@ export const Progress = props => {
 				trailWidth='2'
 				percent={(watched.length / maxEpisodes) * 100}
 			/>
-			{watched.map(episode => (
-				<Paper elevation={2} variant='outlined' className='watched-episode'>
-					{episode.episode_name}
-				</Paper>
-			))}
+			{watched.length === 0 ? (
+				<p>Head to the home page and add your watched episodes.</p>
+			) : (
+				watched.map((episode) => (
+					<Paper elevation={2} variant='outlined' className='watched-episode'>
+						{episode.episode_name}
+					</Paper>
+				))
+			)}
 		</div>
 	);
 };

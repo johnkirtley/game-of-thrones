@@ -1,5 +1,7 @@
 .navbar-desktop {
 	padding: 1.5% 0;
+	background-color: $ice-blue;
+	margin-bottom: 5%;
 	ul {
 		display: flex;
 		justify-content: space-around;
@@ -8,7 +10,7 @@
 
 		a {
 			text-decoration: none;
-			color: white;
+			color: black;
 			font-size: 1.25rem;
 		}
 	}

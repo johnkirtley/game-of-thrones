@@ -7,22 +7,22 @@ import { TextField, Button } from '@material-ui/core';
 
 const initialState = {
 	username: '',
-	password: ''
+	password: '',
 };
 
-export const Login = props => {
+export const Login = (props) => {
 	const [credentials, setCredentials] = useState(initialState);
 	const [loading, setLoading] = useState(false);
 	let isMounted = useRef(true);
 
-	const handleChanges = e => {
+	const handleChanges = (e) => {
 		setCredentials({
 			...credentials,
-			[e.target.name]: e.target.value
+			[e.target.name]: e.target.value,
 		});
 	};
 
-	const handleSubmit = async e => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setLoading(true);
 		await axios
@@ -30,14 +30,14 @@ export const Login = props => {
 				'https://game-of-thrones-backend.herokuapp.com/api/auth/login',
 				credentials
 			)
-			.then(res => {
+			.then((res) => {
 				const token = res.data.token;
 				const id = res.data.id;
 				window.localStorage.setItem('token', token);
 				window.localStorage.setItem('id', id);
 				props.history.push('/progress');
 			})
-			.catch(err => {
+			.catch((err) => {
 				console.log('Error logging in', err);
 			});
 	};
@@ -51,7 +51,7 @@ export const Login = props => {
 	return (
 		<div className='form-container'>
 			{loading ? (
-				<Loader type='Circles' color='#B5E5FA' height={50} width={50} />
+				<Loader type='Circles' color='#FFFFF' height={50} width={50} />
 			) : (
 				''
 			)}

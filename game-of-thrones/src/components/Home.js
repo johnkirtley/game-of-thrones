@@ -4,11 +4,11 @@ import Dropdown from 'react-dropdown';
 
 import { Episodes } from './Episodes';
 
-export const Home = props => {
+export const Home = (props) => {
 	const [selectedSeason, setSelectedSeason] = useState('');
 	const episodes = props.seasons[selectedSeason] || [];
 
-	const handleChange = e => {
+	const handleChange = (e) => {
 		setSelectedSeason(e.value);
 	};
 
@@ -33,20 +33,6 @@ export const Home = props => {
 					</Button>
 				</Grid>
 			</Grid>
-			{/* <Grid
-				container
-				direction='row'
-				justify='center'
-				id='genre-list'
-				spacing={3}>
-				{props.show.genres.map(genre => (
-					<Grid item>
-						<Button className='genre' variant='outlined'>
-							{genre}
-						</Button>
-					</Grid>
-				))}
-			</Grid> */}
 			<img
 				className='main-image'
 				src={props.show.image.original}

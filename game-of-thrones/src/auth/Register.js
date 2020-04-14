@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
 import axios from 'axios';
 
 import { TextField, Button } from '@material-ui/core';
 
 const initialState = {
 	username: '',
-	password: ''
+	password: '',
 };
 
-export const Register = props => {
+export const Register = (props) => {
 	const [credentials, setCredentials] = useState(initialState);
 	const [confirmPass, setConfirmPass] = useState('');
+	const [loading, setLoading] = useState(false);
 
-	const handleChanges = async e => {
+	const handleChanges = async (e) => {
 		setCredentials({
 			...credentials,
-			[e.target.name]: e.target.value
+			[e.target.name]: e.target.value,
 		});
 
 		console.log(credentials);
 	};
 
-	const handleConfirm = e => {
+	const handleConfirm = (e) => {
 		setConfirmPass({
 			...confirmPass,
-			[e.target.name]: e.target.value
+			[e.target.name]: e.target.value,
 		});
 	};
 
@@ -33,22 +35,24 @@ export const Register = props => {
 		console.log(confirmPass);
 	}, [confirmPass]);
 
-	const handleSubmit = async e => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		const password = credentials.password;
 		const confirm = confirmPass.confirmPass;
 
 		if (password === confirm) {
+			setLoading(true);
 			await axios
 				.post(
 					'https://game-of-thrones-backend.herokuapp.com/api/auth/register',
 					credentials
 				)
-				.then(res => {
+				.then((res) => {
 					props.history.push('/login');
+					setLoading(false);
 				})
-				.catch(err => {
+				.catch((err) => {
 					console.log('Error registering', err);
 				});
 		} else {
@@ -58,6 +62,11 @@ export const Register = props => {
 
 	return (
 		<div className='form-container'>
+			{loading ? (
+				<Loader type='Circles' color='#FFFFF' height={50} width={50} />
+			) : (
+				''
+			)}
 			<form onSubmit={handleSubmit} autoComplete='off'>
 				<div>
 					<TextField
