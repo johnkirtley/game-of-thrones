@@ -63,7 +63,7 @@ export const Register = (props) => {
 	return (
 		<div className='form-container'>
 			{loading ? (
-				<Loader type='Circles' color='#B5E5FA' height={50} width={50} />
+				<Loader type='Circles' color='#FFFFF' height={50} width={50} />
 			) : (
 				''
 			)}
