@@ -2,10 +2,14 @@
 	display: flex;
 	flex-flow: column;
 	background-color: $ice-blue;
-	width: 95%;
+	width: 50%;
 	margin: auto;
 	border-radius: 10px;
 	padding: 2% 0;
+
+	@media (max-width: 800px) {
+		width: 95%;
+	}
 }
 
 #register-button,
