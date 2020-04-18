@@ -15,6 +15,7 @@ export const Home = (props) => {
 	return (
 		<div className='container'>
 			<h1>Game of Thrones Episode Tracker</h1>
+			<p>Must be logged in before adding episodes</p>
 			{/* <h1>
 				<img
 					className='title'
