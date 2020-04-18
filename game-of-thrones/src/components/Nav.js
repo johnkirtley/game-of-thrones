@@ -9,7 +9,7 @@ export const Nav = () => {
 		<div class='navbar-desktop'>
 			<ul>
 				<Link to='/'>Home</Link>
-				<Link to='/progress'>Progress Tracker</Link>
+				<Link to='/progress'>Track Progress</Link>
 				<Link to='/login' onClick={clearToken}>
 					Logout
 				</Link>

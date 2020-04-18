@@ -13,15 +13,17 @@ export const Home = (props) => {
 	};
 
 	return (
-		<div>
-			<h1>
+		<div className='container'>
+			<h1>Game of Thrones Episode Tracker</h1>
+			<p>Must be logged in before adding episodes</p>
+			{/* <h1>
 				<img
 					className='title'
 					src='https://fontmeme.com/permalink/200306/bde143405de2a86298ff02a29c36c19b.png'
 					alt='game-of-thrones-font'
 					border='0'></img>
-			</h1>
-			<Grid className='sub-info'>
+			</h1> */}
+			{/* <Grid className='sub-info'>
 				<Grid item>
 					<Button className='status' variant='outlined'>
 						Show Status: {props.show.status}
@@ -32,12 +34,7 @@ export const Home = (props) => {
 						Average Rating: {props.show.rating.average}
 					</Button>
 				</Grid>
-			</Grid>
-			<img
-				className='main-image'
-				src={props.show.image.original}
-				alt={props.show.name}
-			/>
+			</Grid> */}
 
 			<div>
 				<Button variant='contained' id='dropdown'>
