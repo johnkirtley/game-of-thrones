@@ -16,3 +16,16 @@
 	padding: 2% 0;
 	width: 45%;
 }
+
+.remove-button {
+	color: white;
+	background-color: darken($color: red, $amount: 10);
+	border-radius: 10px;
+	padding: 1% 2%;
+	width: 25%;
+	margin: 1rem auto;
+
+	@media (max-width: 800px) {
+		width: 70%;
+	}
+}

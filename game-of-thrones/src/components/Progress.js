@@ -94,7 +94,11 @@ export const Progress = (props) => {
 				watched.map((episode) => (
 					<Paper elevation={2} variant='outlined' className='watched-episode'>
 						{episode.episode_name}
-						<p onClick={() => removeEpisode(episode.episode_name)}>X</p>
+						<p
+							onClick={() => removeEpisode(episode.episode_name)}
+							className='remove-button'>
+							Remove
+						</p>
 					</Paper>
 				))
 			)}
