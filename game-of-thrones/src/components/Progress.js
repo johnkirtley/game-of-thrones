@@ -10,8 +10,6 @@ export const Progress = (props) => {
 	const [maxEpisodes, setMaxEpisodes] = useState();
 	const [isLoading, setIsLoading] = useState(false);
 
-	console.log(maxEpisodes);
-
 	useEffect(() => {
 		fetchShow().then((res) => {
 			setMaxEpisodes(res.data._embedded.episodes.length);
@@ -67,7 +65,7 @@ export const Progress = (props) => {
 				setTimeout(() => {
 					setWatched(res.data);
 					setIsLoading(false);
-				}, 1000);
+				}, 600);
 			})
 			.catch((err) => {
 				console.log('Error getting watched list', err);
