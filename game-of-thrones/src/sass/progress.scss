@@ -1,3 +1,11 @@
+.watched-container {
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		url(https://cdn1.vox-cdn.com/assets/4229567/game-of-thrones-poster_85627-1920x1200.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
+}
+
 .progress-bar {
 	width: 45%;
 	margin: auto;
@@ -7,4 +15,17 @@
 	margin: 1% auto;
 	padding: 2% 0;
 	width: 45%;
+}
+
+.remove-button {
+	color: white;
+	background-color: darken($color: red, $amount: 10);
+	border-radius: 10px;
+	padding: 1% 2%;
+	width: 25%;
+	margin: 1rem auto;
+
+	@media (max-width: 800px) {
+		width: 70%;
+	}
 }

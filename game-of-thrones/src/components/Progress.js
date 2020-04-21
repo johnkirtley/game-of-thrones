@@ -10,8 +10,6 @@ export const Progress = (props) => {
 	const [maxEpisodes, setMaxEpisodes] = useState();
 	const [isLoading, setIsLoading] = useState(false);
 
-	console.log(maxEpisodes);
-
 	useEffect(() => {
 		fetchShow().then((res) => {
 			setMaxEpisodes(res.data._embedded.episodes.length);
@@ -19,6 +17,42 @@ export const Progress = (props) => {
 	}, []);
 
 	const id = window.localStorage.getItem('id');
+
+	const removeEpisode = (episode) => {
+		const removed = {
+			user_id: Number(id),
+			episode_name: episode,
+		};
+
+		console.log(removed);
+
+		axiosWithAuth()
+			.delete(`https://game-of-thrones-backend.herokuapp.com/api/users/${id}`, {
+				data: removed,
+			})
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((err) => {
+				console.log('Error removing episode', err);
+			});
+
+		setIsLoading(true);
+
+		axiosWithAuth()
+			.get(
+				`https://game-of-thrones-backend.herokuapp.com/api/users/${id}/watched`
+			)
+			.then((res) => {
+				setTimeout(() => {
+					setWatched(res.data);
+					setIsLoading(false);
+				}, 500);
+			})
+			.catch((err) => {
+				console.log('Error getting watched list', err);
+			});
+	};
 
 	useEffect(() => {
 		setIsLoading(true);
@@ -31,7 +65,7 @@ export const Progress = (props) => {
 				setTimeout(() => {
 					setWatched(res.data);
 					setIsLoading(false);
-				}, 1000);
+				}, 600);
 			})
 			.catch((err) => {
 				console.log('Error getting watched list', err);
@@ -60,6 +94,11 @@ export const Progress = (props) => {
 				watched.map((episode) => (
 					<Paper elevation={2} variant='outlined' className='watched-episode'>
 						{episode.episode_name}
+						<p
+							onClick={() => removeEpisode(episode.episode_name)}
+							className='remove-button'>
+							Remove
+						</p>
 					</Paper>
 				))
 			)}
