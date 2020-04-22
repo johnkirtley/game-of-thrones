@@ -18,7 +18,7 @@ export const Progress = (props) => {
 
 	const id = window.localStorage.getItem('id');
 
-	const removeEpisode = (episode) => {
+	const removeEpisode = async (episode) => {
 		const removed = {
 			user_id: Number(id),
 			episode_name: episode,
@@ -26,7 +26,7 @@ export const Progress = (props) => {
 
 		console.log(removed);
 
-		axiosWithAuth()
+		await axiosWithAuth()
 			.delete(`https://game-of-thrones-backend.herokuapp.com/api/users/${id}`, {
 				data: removed,
 			})
