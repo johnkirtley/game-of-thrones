@@ -10,7 +10,7 @@
 		"axios": "^0.21.1",
 		"bootstrap": "^4.4.1",
 		"html-react-parser": "^0.10.3",
-		"node-sass": "^4.13.1",
+		"node-sass": "^7.0.0",
 		"rc-progress": "^2.5.2",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
